@@ -15,9 +15,14 @@
         <init-param>
             <param-name>pageTitle</param-name>
             <param-value>Cloud Scale Web App Session Management</param-value>
-        </init-param>
-    </servlet>
+    </init-param>
 
+    <init-param>
+           <param-name>deploymentMessage</param-name>
+           <param-value>Sample Jenkins Production Deployment</param-value>
+    </init-param>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>TrackerServlet</servlet-name>
         <url-pattern>/*</url-pattern>
