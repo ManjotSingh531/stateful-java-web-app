@@ -19,7 +19,7 @@
 
     <init-param>
            <param-name>deploymentMessage</param-name>
-           <param-value>Sample Jenkins Production Deployment</param-value>
+           <param-value>Sample Jenkins Staging+Production Deployment</param-value>
     </init-param>
     </servlet>
     
