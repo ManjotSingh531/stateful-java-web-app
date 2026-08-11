@@ -33,6 +33,8 @@ public class TrackerServlet extends HttpServlet {
 
     private String pageTitle = "Cloud Scale Web App Session Management";
 
+    private String deploymentMessage = "Jenkins Production Deployment = Build Successful";
+
     /**
      * Initialize the Servlet
      * @param config the <code>ServletConfig</code> object
@@ -43,6 +45,13 @@ public class TrackerServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         this.pageTitle = config.getInitParameter("pageTitle");
+	String configuredDeploymentMessage =
+        config.getInitParameter("deploymentMessage");
+	
+	if (configuredDeploymentMessage != null
+			&& !configuredDeploymentMessage.trim().isEmpty()) {
+		this.deploymentMessage = configuredDeploymentMessage;
+			}
     }
 
     /**
@@ -75,6 +84,10 @@ public class TrackerServlet extends HttpServlet {
         out.println("<font size='12'>");
         out.println(this.pageTitle);
         out.println("</font><br><br>");
+
+	out.println("<h2 style='color: green;'>");
+	out.println(this.deploymentMessage);
+	out.println("</h2>");
 
         PageVisits pageVisits = getSessionObj(session);
         pageVisits.increment();
