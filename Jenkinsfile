@@ -20,5 +20,12 @@ pipeline {
                 build job: 'Deploy tomcat application to staging env'
             }
         }
+        stage('Deploy Application in Production Environment') {
+            steps {
+                timeout(time: 5, unit: 'DAYS') {
+                    input message: 'Approve deployment to production?', ok: 'Deploy'
+                }
+                build job: 'Deploy tomcat application to prod env'            }
+        }
     }
 }
