@@ -13,6 +13,9 @@ pipeline {
                 failure {
                     echo 'Build failed!'
                 }
+            stage('Deploy Application in staging environment') {
+                build job: 'Deploy tomcat application to staging env'
+                }
             }
         }
     }
