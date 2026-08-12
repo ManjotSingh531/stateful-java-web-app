@@ -1,26 +1,19 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Build Application') {
             steps {
-                echo 'Testing...'
+                sh 'mvn clean package'
             }
-        }
-        stage('Build') {
-            steps {
-                echo 'Building...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-            }
-        }
-        stage('Deploy to Production') {
-            steps {
-                echo 'Deploying to Production...'
+            post {
+                success {
+                    echo 'Now Archive the build artifacts!'
+                    archiveArtifacts artifacts: '**/*.war', fingerprint: true
+                }
+                failure {
+                    echo 'Build failed!'
+                }
             }
         }
     }
-
 }
