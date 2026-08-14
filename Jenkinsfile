@@ -19,7 +19,7 @@ pipeline {
             steps {
 		sh 'pwd'
 		sh 'ls -a'
-                sh 'docker build -t mytomcatwebapp:${env.BUILD_NUMBER} .'
+                sh 'docker build -t mytomcatwebapp:$BUILD_NUMBER .'
             }
         }
     }
